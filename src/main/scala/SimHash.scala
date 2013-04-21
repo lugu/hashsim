@@ -14,32 +14,40 @@ object HashValue {
 }
 
 case class HashValue(val hash: Int) extends Ordered[HashValue] {
-  def hashes = for (i <- 0 until 32) yield new HashValue(Integer.rotateLeft(hash, i))
+  def rotateLeft(i: Int) = new HashValue(Integer.rotateLeft(hash, i))
+  def permutation(i: Int) = rotateLeft(i)
+  def permutations = for (i <- 0 to 32) yield permutation(i)
+  def compare(that: HashValue) = hash.compare(that.hash)
+  override def toString = "%32s".format(hash.toBinaryString).replace(' ', '0') 
   def toInt = hash
-  override def toString = (for (i <- 0 until 32) yield HashValue.bit(i, hash)).mkString("")
-  def compare(that: HashValue): Int = hash - that.hash
 }
 
-case class File(val filename: String) extends Ordered[File] {
-
-  val hash = HashValue(tokens.map(word => word.hashCode))
-
-  def hashes: Seq[HashValue] = hash.hashes
-  def compare(that: File): Int = hash.compare(that.hash)
-  def tokens: Seq[String] = tokenize(open(filename).mkString(""))
+object File {
+  def apply(filename: String) = new File(filename, File.hashValue(filename)) 
+  def tokens(filename: String): Seq[String] = tokenize(open(filename).mkString(""))
   def tokenize(text: String): Seq[String] = text.toLowerCase.split("""\s+""")
   def open(file: String) = Source.fromURL(getClass.getResource(file))
+  def hashValue(filename: String) = HashValue(tokens(filename).map(word => word.hashCode))
+}
+
+case class File(val filename: String, val hash: HashValue) extends Ordered[File] {
+  def permutation(i: Int) = new File(filename, hash.permutation(i))
+  def tokens: Seq[String] = File.tokens(filename)
+  def compare(that: File) = hash.compare(that.hash)
   override def toString = "%s (%d): %s, %s".format(hash, hash.toInt, filename, tokens.take(20).mkString(" "))
 }
 
 object HashSim {
-  lazy val files: Seq[File] = fileList.map(file => new File(file))
 
   def main(args: Array[String]) = {
+
+    val files: Seq[File] = fileList.map(file => File(file))
     files.foreach(println)
+    for (i <- 0 until 32) {
+      val order = files.map(f => f.permutation(i)).sorted
+    }
   }
 
   def fileList: Seq[String] = open("files.txt").getLines.toList
   def open(file: String) = Source.fromURL(getClass.getResource(file))
 }
-
