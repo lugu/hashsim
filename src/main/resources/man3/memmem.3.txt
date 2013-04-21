@@ -1,0 +1,47 @@
+MEMMEM(3)                  Linux Programmer's Manual                 MEMMEM(3)
+
+
+
+NAME
+       memmem - locate a substring
+
+SYNOPSIS
+       #define _GNU_SOURCE         /* See feature_test_macros(7) */
+       #include <string.h>
+
+       void *memmem(const void *haystack, size_t haystacklen,
+                    const void *needle, size_t needlelen);
+
+DESCRIPTION
+       The  memmem()  function  finds the start of the first occurrence of the
+       substring needle of length needlelen in the  memory  area  haystack  of
+       length haystacklen.
+
+RETURN VALUE
+       The  memmem()  function  returns a pointer to the beginning of the sub‐
+       string, or NULL if the substring is not found.
+
+CONFORMING TO
+       This function is a GNU extension.
+
+BUGS
+       This function was broken in Linux libraries up to  and  including  libc
+       5.0.9; there the needle and haystack arguments were interchanged, and a
+       pointer to the end of the first occurrence of needle was returned.
+
+       Both old and  new  libc's  have  the  bug  that  if  needle  is  empty,
+       haystack-1  (instead  of haystack) is returned.  And glibc 2.0 makes it
+       worse, returning a pointer to the last byte of haystack.  This is fixed
+       in glibc 2.1.
+
+SEE ALSO
+       strstr(3)
+
+COLOPHON
+       This  page  is  part of release 3.51 of the Linux man-pages project.  A
+       description of the project, and information about reporting  bugs,  can
+       be found at http://www.kernel.org/doc/man-pages/.
+
+
+
+GNU                               2008-12-05                         MEMMEM(3)

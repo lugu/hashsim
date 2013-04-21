@@ -1,0 +1,61 @@
+ISWALNUM(3)                Linux Programmer's Manual               ISWALNUM(3)
+
+
+
+NAME
+       iswalnum - test for alphanumeric wide character
+
+SYNOPSIS
+       #include <wctype.h>
+
+       int iswalnum(wint_t wc);
+
+DESCRIPTION
+       The  iswalnum()  function is the wide-character equivalent of the isal‐
+       num(3) function.  It tests whether wc is a wide character belonging  to
+       the wide-character class "alnum".
+
+       The  wide-character  class  "alnum" is a subclass of the wide-character
+       class "graph", and therefore also  a  subclass  of  the  wide-character
+       class "print".
+
+       Being  a subclass of the wide-character class "print", the wide-charac‐
+       ter class "alnum" is disjoint from the wide-character class "cntrl".
+
+       Being a subclass of the wide-character class "graph", the  wide-charac‐
+       ter class "alnum" is disjoint from the wide-character class "space" and
+       its subclass "blank".
+
+       The wide-character class "alnum" is disjoint  from  the  wide-character
+       class "punct".
+
+       The  wide-character  class  "alnum"  is the union of the wide-character
+       classes "alpha" and "digit".  As such, it also contains the  wide-char‐
+       acter class "xdigit".
+
+       The  wide-character  class "alnum" always contains at least the letters
+       'A' to 'Z', 'a' to 'z' and the digits '0' to '9'.
+
+RETURN VALUE
+       The iswalnum() function returns nonzero  if  wc  is  a  wide  character
+       belonging  to  the  wide-character class "alnum".  Otherwise it returns
+       zero.
+
+CONFORMING TO
+       C99.
+
+NOTES
+       The behavior of iswalnum() depends on the LC_CTYPE category of the cur‐
+       rent locale.
+
+SEE ALSO
+       isalnum(3), iswctype(3)
+
+COLOPHON
+       This  page  is  part of release 3.51 of the Linux man-pages project.  A
+       description of the project, and information about reporting  bugs,  can
+       be found at http://www.kernel.org/doc/man-pages/.
+
+
+
+GNU                               1999-07-25                       ISWALNUM(3)

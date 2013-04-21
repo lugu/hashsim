@@ -1,0 +1,27 @@
+SECURETTY(5)               Linux Programmer's Manual              SECURETTY(5)
+
+
+
+NAME
+       securetty - file which lists terminals from which root can log in
+
+DESCRIPTION
+       The  file  /etc/securetty  is used by (some versions of) login(1).  The
+       file contains the device names of terminal lines (one per line, without
+       leading /dev/) on which root is allowed to login.  See login.defs(5) if
+       you use the shadow suite.
+
+FILES
+       /etc/securetty
+
+SEE ALSO
+       login(1), login.defs(5)
+
+COLOPHON
+       This page is part of release 3.51 of the Linux  man-pages  project.   A
+       description  of  the project, and information about reporting bugs, can
+       be found at http://www.kernel.org/doc/man-pages/.
+
+
+
+Linux                             1992-12-29                      SECURETTY(5)

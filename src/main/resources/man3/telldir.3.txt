@@ -1,0 +1,56 @@
+TELLDIR(3)                 Linux Programmer's Manual                TELLDIR(3)
+
+
+
+NAME
+       telldir - return current location in directory stream
+
+SYNOPSIS
+       #include <dirent.h>
+
+       long telldir(DIR *dirp);
+
+   Feature Test Macro Requirements for glibc (see feature_test_macros(7)):
+
+       telldir(): _BSD_SOURCE || _SVID_SOURCE || _XOPEN_SOURCE
+
+DESCRIPTION
+       The telldir() function returns the current location associated with the
+       directory stream dirp.
+
+RETURN VALUE
+       On success, the telldir() function returns the current location in  the
+       directory stream.  On error, -1 is returned, and errno is set appropri‐
+       ately.
+
+ERRORS
+       EBADF  Invalid directory stream descriptor dirp.
+
+CONFORMING TO
+       4.3BSD, POSIX.1-2001.
+
+NOTES
+       In glibc up to version 2.1.1, the return type of telldir()  was  off_t.
+       POSIX.1-2001  specifies  long,  and  this  is the type used since glibc
+       2.1.2.
+
+       In early file systems, the value returned by  telldir()  was  a  simple
+       file  offset  within a directory.  Modern file systems use tree or hash
+       structures, rather than flat tables, to represent directories.  On such
+       file  systems,  the value returned by telldir() (and used internally by
+       readdir(3)) is a "cookie" that is used by the implementation to  derive
+       a  position within a directory.  Application programs should treat this
+       strictly as an opaque value, making no assumptions about its contents.
+
+SEE ALSO
+       closedir(3),   opendir(3),   readdir(3),   rewinddir(3),    scandir(3),
+       seekdir(3)
+
+COLOPHON
+       This  page  is  part of release 3.51 of the Linux man-pages project.  A
+       description of the project, and information about reporting  bugs,  can
+       be found at http://www.kernel.org/doc/man-pages/.
+
+
+
+                                  2013-03-24                        TELLDIR(3)

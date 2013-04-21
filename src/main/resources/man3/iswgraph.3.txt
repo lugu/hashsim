@@ -1,0 +1,53 @@
+ISWGRAPH(3)                Linux Programmer's Manual               ISWGRAPH(3)
+
+
+
+NAME
+       iswgraph - test for graphic wide character
+
+SYNOPSIS
+       #include <wctype.h>
+
+       int iswgraph(wint_t wc);
+
+DESCRIPTION
+       The  iswgraph()  function  is  the  wide-character  equivalent  of  the
+       isgraph(3) function.  It tests whether wc is a wide character belonging
+       to the wide-character class "graph".
+
+       The  wide-character  class  "graph" is a subclass of the wide-character
+       class "print".
+
+       Being a subclass of the wide-character class "print", the  wide-charac‐
+       ter class "graph" is disjoint from the wide-character class "cntrl".
+
+       The  wide-character  class  "graph" is disjoint from the wide-character
+       class "space" and therefore also disjoint from its subclass "blank".
+
+       The wide-character class "graph" contains all the wide characters  from
+       the wide-character class "print" except the space character.  It there‐
+       fore contains the wide-character classes "alnum" and "punct".
+
+RETURN VALUE
+       The iswgraph() function returns nonzero  if  wc  is  a  wide  character
+       belonging  to  the  wide-character class "graph".  Otherwise it returns
+       zero.
+
+CONFORMING TO
+       C99.
+
+NOTES
+       The behavior of iswgraph() depends on the LC_CTYPE category of the cur‐
+       rent locale.
+
+SEE ALSO
+       isgraph(3), iswctype(3)
+
+COLOPHON
+       This  page  is  part of release 3.51 of the Linux man-pages project.  A
+       description of the project, and information about reporting  bugs,  can
+       be found at http://www.kernel.org/doc/man-pages/.
+
+
+
+GNU                               1999-07-25                       ISWGRAPH(3)

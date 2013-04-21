@@ -1,0 +1,51 @@
+CANONICALIZE_FILE_NAME(3)  Linux Programmer's Manual CANONICALIZE_FILE_NAME(3)
+
+
+
+NAME
+       canonicalize_file_name - return the canonicalized absolute pathname
+
+SYNOPSIS
+       #define _GNU_SOURCE         /* See feature_test_macros(7) */
+       #include <stdlib.h>
+
+       char *canonicalize_file_name(const char *path);
+
+DESCRIPTION
+       The  canonicalize_file_name() function returns a null-terminated string
+       containing the canonicalized absolute pathname corresponding  to  path.
+       In  the  returned string, symbolic links are resolved, as are .  and ..
+       pathname components.  Consecutive slash (/) characters are replaced  by
+       a single slash.
+
+       The   returned   string   is   dynamically   allocated   by  canonical‐
+       ize_file_name() and the caller should deallocate it with  free(3)  when
+       it is no longer required.
+
+       The call canonicalize_file_name(path) is equivalent to the call:
+
+           realpath(path, NULL);
+
+CONFORMING TO
+       This function is a GNU extension.
+
+RETURN VALUE
+       On  success, canonicalize_file_name() returns a null-terminated string.
+       On error (e.g., a pathname component is unreadable or does not  exist),
+       canonicalize_file_name()  returns  NULL  and sets errno to indicate the
+       error.
+
+ERRORS
+       See realpath(3).
+
+SEE ALSO
+       readlink(2), realpath(3)
+
+COLOPHON
+       This page is part of release 3.51 of the Linux  man-pages  project.   A
+       description  of  the project, and information about reporting bugs, can
+       be found at http://www.kernel.org/doc/man-pages/.
+
+
+
+GNU                               2013-03-10         CANONICALIZE_FILE_NAME(3)

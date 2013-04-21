@@ -1,0 +1,30 @@
+INTRO(8)                   Linux Programmer's Manual                  INTRO(8)
+
+
+
+NAME
+       intro - introduction to administration and privileged commands
+
+DESCRIPTION
+       Section  8  of the manual describes commands which either can be or are
+       used only by the superuser, like system-administration  commands,  dae‐
+       mons, and hardware-related commands.
+
+       As  with the commands in described section 1, the commands described in
+       this section terminate with an exit status that indicates  whether  the
+       command succeeded or failed.  See intro(1) for more information.
+
+NOTES
+   Authors and copyright conditions
+       Look  at  the  header  of  the manual page source for the author(s) and
+       copyright conditions.  Note that these can be different  from  page  to
+       page!
+
+COLOPHON
+       This  page  is  part of release 3.51 of the Linux man-pages project.  A
+       description of the project, and information about reporting  bugs,  can
+       be found at http://www.kernel.org/doc/man-pages/.
+
+
+
+Linux                             2007-10-23                          INTRO(8)

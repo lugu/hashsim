@@ -1,0 +1,46 @@
+INFNAN(3)                  Linux Programmer's Manual                 INFNAN(3)
+
+
+
+NAME
+       infnan - deal with infinite or not-a-number (NaN) result
+
+SYNOPSIS
+       #include <math.h>
+
+       double infnan(int error);
+
+       Link with -lm.
+
+DESCRIPTION
+       The infnan() function returns a suitable value for infinity and "not-a-
+       number" (NaN) results.  The value of error can be ERANGE  to  represent
+       infinity or anything else to represent NaN.  errno is also set.
+
+RETURN VALUE
+       If error is ERANGE (Infinity), HUGE_VAL is returned.
+
+       If error is -ERANGE (-Infinity), -HUGE_VAL is returned.
+
+       If error is anything else, NAN is returned.
+
+ERRORS
+       EDOM   The value of error is "not-a-number" (NaN).
+
+       ERANGE The value of error is positive infinity or negative infinity.
+
+CONFORMING TO
+       4.3BSD.
+
+NOTES
+       This  obsolete  function  was  provided  in libc4 and libc5, but is not
+       available in glibc2.
+
+COLOPHON
+       This page is part of release 3.51 of the Linux  man-pages  project.   A
+       description  of  the project, and information about reporting bugs, can
+       be found at http://www.kernel.org/doc/man-pages/.
+
+
+
+GNU                               1993-06-02                         INFNAN(3)

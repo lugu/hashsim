@@ -1,0 +1,59 @@
+ISWPUNCT(3)                Linux Programmer's Manual               ISWPUNCT(3)
+
+
+
+NAME
+       iswpunct - test for punctuation or symbolic wide character
+
+SYNOPSIS
+       #include <wctype.h>
+
+       int iswpunct(wint_t wc);
+
+DESCRIPTION
+       The  iswpunct()  function  is  the  wide-character  equivalent  of  the
+       ispunct(3) function.  It tests whether wc is a wide character belonging
+       to the wide-character class "punct".
+
+       The  wide-character  class  "punct" is a subclass of the wide-character
+       class "graph", and therefore also  a  subclass  of  the  wide-character
+       class "print".
+
+       The  wide-character  class  "punct" is disjoint from the wide-character
+       class "alnum" and therefore also disjoint from its subclasses  "alpha",
+       "upper", "lower", "digit", "xdigit".
+
+       Being  a subclass of the wide-character class "print", the wide-charac‐
+       ter class "punct" is disjoint from the wide-character class "cntrl".
+
+       Being a subclass of the wide-character class "graph", the  wide-charac‐
+       ter class "punct" is disjoint from the wide-character class "space" and
+       its subclass "blank".
+
+RETURN VALUE
+       The iswpunct() function returns  nonzero  if  wc  is  a  wide-character
+       belonging  to  the  wide-character class "punct".  Otherwise it returns
+       zero.
+
+CONFORMING TO
+       C99.
+
+NOTES
+       The behavior of iswpunct() depends on the LC_CTYPE category of the cur‐
+       rent locale.
+
+       This  function's  name  is a misnomer when dealing with Unicode charac‐
+       ters, because the wide-character class "punct" contains  both  punctua‐
+       tion characters and symbol (math, currency, etc.) characters.
+
+SEE ALSO
+       ispunct(3), iswctype(3)
+
+COLOPHON
+       This  page  is  part of release 3.51 of the Linux man-pages project.  A
+       description of the project, and information about reporting  bugs,  can
+       be found at http://www.kernel.org/doc/man-pages/.
+
+
+
+GNU                               1999-07-25                       ISWPUNCT(3)

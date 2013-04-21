@@ -1,0 +1,44 @@
+TOWUPPER(3)                Linux Programmer's Manual               TOWUPPER(3)
+
+
+
+NAME
+       towupper - convert a wide character to uppercase
+
+SYNOPSIS
+       #include <wctype.h>
+
+       wint_t towupper(wint_t wc);
+
+DESCRIPTION
+       The  towupper()  function is the wide-character equivalent of the toup‐
+       per(3) function.  If wc is a wide character, it is converted to  upper‐
+       case.  Characters which do not have case are returned unchanged.  If wc
+       is WEOF, WEOF is returned.
+
+RETURN VALUE
+       The towupper() function returns the uppercase equivalent of wc, or WEOF
+       if wc is WEOF.
+
+CONFORMING TO
+       C99.
+
+NOTES
+       The behavior of towupper() depends on the LC_CTYPE category of the cur‐
+       rent locale.
+
+       This function is not very appropriate for dealing with Unicode  charac‐
+       ters,  because  Unicode knows about three cases: upper, lower and title
+       case.
+
+SEE ALSO
+       iswupper(3), towctrans(3), towlower(3)
+
+COLOPHON
+       This page is part of release 3.51 of the Linux  man-pages  project.   A
+       description  of  the project, and information about reporting bugs, can
+       be found at http://www.kernel.org/doc/man-pages/.
+
+
+
+GNU                               1999-07-25                       TOWUPPER(3)

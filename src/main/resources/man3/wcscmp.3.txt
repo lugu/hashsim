@@ -1,0 +1,39 @@
+WCSCMP(3)                  Linux Programmer's Manual                 WCSCMP(3)
+
+
+
+NAME
+       wcscmp - compare two wide-character strings
+
+SYNOPSIS
+       #include <wchar.h>
+
+       int wcscmp(const wchar_t *s1, const wchar_t *s2);
+
+DESCRIPTION
+       The wcscmp() function is the wide-character equivalent of the strcmp(3)
+       function.  It compares the wide-character string pointed to by  s1  and
+       the wide-character string pointed to by s2.
+
+RETURN VALUE
+       The  wcscmp() function returns zero if the wide-character strings at s1
+       and s2 are equal.  It returns an integer greater than zero  if  at  the
+       first  differing  position i, the corresponding wide-character s1[i] is
+       greater than s2[i].  It returns an integer less than  zero  if  at  the
+       first  differing  position i, the corresponding wide-character s1[i] is
+       less than s2[i].
+
+CONFORMING TO
+       C99.
+
+SEE ALSO
+       strcmp(3), wcscasecmp(3), wmemcmp(3)
+
+COLOPHON
+       This page is part of release 3.51 of the Linux  man-pages  project.   A
+       description  of  the project, and information about reporting bugs, can
+       be found at http://www.kernel.org/doc/man-pages/.
+
+
+
+GNU                               1999-07-25                         WCSCMP(3)

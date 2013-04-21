@@ -1,0 +1,68 @@
+ISWLOWER(3)                Linux Programmer's Manual               ISWLOWER(3)
+
+
+
+NAME
+       iswlower - test for lowercase wide character
+
+SYNOPSIS
+       #include <wctype.h>
+
+       int iswlower(wint_t wc);
+
+DESCRIPTION
+       The  iswlower()  function  is  the  wide-character  equivalent  of  the
+       islower(3) function.  It tests whether wc is a wide character belonging
+       to the wide-character class "lower".
+
+       The  wide-character  class  "lower" is a subclass of the wide-character
+       class "alpha", and therefore also  a  subclass  of  the  wide-character
+       class  "alnum",  of  the  wide-character class "graph" and of the wide-
+       character class "print".
+
+       Being a subclass of the wide-character class "print", the  wide-charac‐
+       ter class "lower" is disjoint from the wide-character class "cntrl".
+
+       Being  a subclass of the wide-character class "graph", the wide-charac‐
+       ter class "lower" is disjoint from the wide-character class "space" and
+       its subclass "blank".
+
+       Being  a subclass of the wide-character class "alnum", the wide-charac‐
+       ter class "lower" is disjoint from the wide-character class "punct".
+
+       Being a subclass of the wide-character class "alpha", the  wide-charac‐
+       ter class "lower" is disjoint from the wide-character class "digit".
+
+       The  wide-character class "lower" contains at least those characters wc
+       which are equal to towlower(wc) and different from towupper(wc).
+
+       The wide-character class "lower" always contains at least  the  letters
+       'a' to 'z'.
+
+RETURN VALUE
+       The  iswlower()  function  returns  nonzero  if  wc is a wide character
+       belonging to the wide-character class "lower".   Otherwise  it  returns
+       zero.
+
+CONFORMING TO
+       C99.
+
+NOTES
+       The behavior of iswlower() depends on the LC_CTYPE category of the cur‐
+       rent locale.
+
+       This function is not very appropriate for dealing with Unicode  charac‐
+       ters,  because  Unicode knows about three cases: upper, lower and title
+       case.
+
+SEE ALSO
+       islower(3), iswctype(3), towlower(3)
+
+COLOPHON
+       This page is part of release 3.51 of the Linux  man-pages  project.   A
+       description  of  the project, and information about reporting bugs, can
+       be found at http://www.kernel.org/doc/man-pages/.
+
+
+
+GNU                               1999-07-25                       ISWLOWER(3)

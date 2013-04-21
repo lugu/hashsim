@@ -1,0 +1,68 @@
+ISWUPPER(3)                Linux Programmer's Manual               ISWUPPER(3)
+
+
+
+NAME
+       iswupper - test for uppercase wide character
+
+SYNOPSIS
+       #include <wctype.h>
+
+       int iswupper(wint_t wc);
+
+DESCRIPTION
+       The  iswupper()  function is the wide-character equivalent of the isup‐
+       per(3) function.  It tests whether wc is a wide character belonging  to
+       the wide-character class "upper".
+
+       The  wide-character  class  "upper" is a subclass of the wide-character
+       class "alpha", and therefore also  a  subclass  of  the  wide-character
+       class  "alnum",  of  the  wide-character class "graph" and of the wide-
+       character class "print".
+
+       Being a subclass of the wide-character class "print", the  wide-charac‐
+       ter class "upper" is disjoint from the wide-character class "cntrl".
+
+       Being  a subclass of the wide-character class "graph", the wide-charac‐
+       ter class "upper" is disjoint from the wide-character class "space" and
+       its subclass "blank".
+
+       Being  a subclass of the wide-character class "alnum", the wide-charac‐
+       ter class "upper" is disjoint from the wide-character class "punct".
+
+       Being a subclass of the wide-character class "alpha", the  wide-charac‐
+       ter class "upper" is disjoint from the wide-character class "digit".
+
+       The  wide-character class "upper" contains at least those characters wc
+       which are equal to towupper(wc) and different from towlower(wc).
+
+       The wide-character class "upper" always contains at least  the  letters
+       'A' to 'Z'.
+
+RETURN VALUE
+       The  iswupper()  function  returns  nonzero  if  wc is a wide character
+       belonging to the wide-character class "upper".   Otherwise  it  returns
+       zero.
+
+CONFORMING TO
+       C99.
+
+NOTES
+       The behavior of iswupper() depends on the LC_CTYPE category of the cur‐
+       rent locale.
+
+       This function is not very appropriate for dealing with Unicode  charac‐
+       ters,  because  Unicode knows about three cases: upper, lower and title
+       case.
+
+SEE ALSO
+       isupper(3), iswctype(3), towupper(3)
+
+COLOPHON
+       This page is part of release 3.51 of the Linux  man-pages  project.   A
+       description  of  the project, and information about reporting bugs, can
+       be found at http://www.kernel.org/doc/man-pages/.
+
+
+
+GNU                               1999-07-25                       ISWUPPER(3)

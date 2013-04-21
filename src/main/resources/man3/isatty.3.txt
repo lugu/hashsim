@@ -1,0 +1,40 @@
+ISATTY(3)                  Linux Programmer's Manual                 ISATTY(3)
+
+
+
+NAME
+       isatty - test whether a file descriptor refers to a terminal
+
+SYNOPSIS
+       #include <unistd.h>
+
+       int isatty(int fd);
+
+DESCRIPTION
+       The  isatty()  function  tests  whether  fd  is an open file descriptor
+       referring to a terminal.
+
+RETURN VALUE
+       isatty() returns 1 if fd is an open file descriptor referring to a ter‐
+       minal; otherwise 0 is returned, and errno is set to indicate the error.
+
+ERRORS
+       EBADF  fd is not a valid file descriptor.
+
+       EINVAL fd  refers to a file other than a terminal.  POSIX.1-2001 speci‐
+              fies the error ENOTTY for this case.
+
+CONFORMING TO
+       SVr4, 4.3BSD, POSIX.1-2001.
+
+SEE ALSO
+       fstat(2), ttyname(3)
+
+COLOPHON
+       This page is part of release 3.51 of the Linux  man-pages  project.   A
+       description  of  the project, and information about reporting bugs, can
+       be found at http://www.kernel.org/doc/man-pages/.
+
+
+
+Linux                             2008-12-03                         ISATTY(3)

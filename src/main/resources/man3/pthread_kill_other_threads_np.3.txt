@@ -1,0 +1,47 @@
+PTHREAD_KILL_OTHER_THREADS_Linux Programmer's PTHREAD_KILL_OTHER_THREADS_NP(3)
+
+
+
+NAME
+       pthread_kill_other_threads_np - terminate all other threads in process
+
+SYNOPSIS
+       #include <pthread.h>
+
+       void pthread_kill_other_threads_np(void);
+
+DESCRIPTION
+       pthread_kill_other_threads_np()  has an effect only in the LinuxThreads
+       threading implementation.  On that implementation, calling  this  func‐
+       tion  causes  the  immediate termination of all threads in the applica‐
+       tion, except the calling thread.  The cancellation state and  cancella‐
+       tion  type of the to-be-terminated threads are ignored, and the cleanup
+       handlers are not called in those threads.
+
+CONFORMING TO
+       This function is a nonstandard GNU extension; hence  the  suffix  "_np"
+       (nonportable) in the name.
+
+NOTES
+       pthread_kill_other_threads_np()  is intended to be called just before a
+       thread calls  execve(2)  or  a  similar  function.   This  function  is
+       designed to address a limitation in the obsolete LinuxThreads implemen‐
+       tation whereby the other threads of an application  are  not  automati‐
+       cally terminated (as POSIX.1-2001 requires) during execve(2).
+
+       In  the  NPTL threading implementation, pthread_kill_other_threads_np()
+       exists, but does nothing.  (Nothing  needs  to  be  done,  because  the
+       implementation does the right thing during an execve(2).)
+
+SEE ALSO
+       execve(2),  pthread_cancel(3),  pthread_setcancelstate(3), pthread_set‐
+       canceltype(3), pthreads(7)
+
+COLOPHON
+       This page is part of release 3.51 of the Linux  man-pages  project.   A
+       description  of  the project, and information about reporting bugs, can
+       be found at http://www.kernel.org/doc/man-pages/.
+
+
+
+Linux                             2010-09-09  PTHREAD_KILL_OTHER_THREADS_NP(3)

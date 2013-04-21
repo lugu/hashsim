@@ -1,0 +1,33 @@
+WCSTOIMAX(3)               Linux Programmer's Manual              WCSTOIMAX(3)
+
+
+
+NAME
+       wcstoimax, wcstoumax - convert wide-character string to integer
+
+SYNOPSIS
+       #include <stddef.h>
+       #include <inttypes.h>
+
+       intmax_t wcstoimax(const wchar_t *nptr, wchar_t **endptr, int base);
+       uintmax_t wcstoumax(const wchar_t *nptr, wchar_t **endptr, int base);
+
+DESCRIPTION
+       These  functions  are  just  like wcstol(3) and wcstoul(3), except that
+       they return a value of type intmax_t and uintmax_t, respectively.
+
+CONFORMING TO
+       C99.
+
+SEE ALSO
+       imaxabs(3),   imaxdiv(3),   strtoimax(3),   strtoumax(3),    wcstol(3),
+       wcstoul(3)
+
+COLOPHON
+       This  page  is  part of release 3.51 of the Linux man-pages project.  A
+       description of the project, and information about reporting  bugs,  can
+       be found at http://www.kernel.org/doc/man-pages/.
+
+
+
+                                  2003-11-01                      WCSTOIMAX(3)

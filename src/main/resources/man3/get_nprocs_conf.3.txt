@@ -1,0 +1,64 @@
+GET_NPROCS(3)              Linux Programmer's Manual             GET_NPROCS(3)
+
+
+
+NAME
+       get_nprocs, get_nprocs_conf - get number of processors
+
+SYNOPSIS
+       #include <sys/sysinfo.h>
+
+       int get_nprocs(void);
+       int get_nprocs_conf(void);
+
+DESCRIPTION
+       The function get_nprocs_conf() returns the number of processors config‐
+       ured by the operating system.
+
+       The function get_nprocs() returns the number  of  processors  currently
+       available  in the system.  This may be less than the number returned by
+       get_nprocs_conf() because processors may be offline (e.g., on  hotplug‐
+       gable systems).
+
+RETURN VALUE
+       As given in DESCRIPTION.
+
+CONFORMING TO
+       These functions are GNU extensions.
+
+NOTES
+       The  current  implementation  of  these  functions is rather expensive,
+       since they open and parse files in the /sys file system each time  they
+       are called.
+
+       The  following sysconf(3) calls make use of the functions documented on
+       this page to return the same information.
+
+           np = sysconf(_SC_NPROCESSORS_CONF);     /* processors configured */
+           np = sysconf(_SC_NPROCESSORS_ONLN);     /* processors available */
+
+EXAMPLE
+       The following example shows how get_nprocs() and get_nprocs_conf()  can
+       be used.
+
+       #include <stdio.h>
+       #include <sys/sysinfo.h>
+
+       int
+       main(int argc, char *argv[])
+       {
+           printf("This system has %d processors configured and "
+                   "%d processors available.\n",
+                   get_nprocs_conf(), get_nprocs());
+           return 0;
+       }
+
+
+COLOPHON
+       This  page  is  part of release 3.51 of the Linux man-pages project.  A
+       description of the project, and information about reporting  bugs,  can
+       be found at http://www.kernel.org/doc/man-pages/.
+
+
+
+GNU                               2012-03-20                     GET_NPROCS(3)
